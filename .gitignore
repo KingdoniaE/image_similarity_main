@@ -5,5 +5,13 @@ __pycache__/
 venv/
 .env
 
+test/
 common/dataset/
 common/fashion-labels.csv
+
+# Python
+
+# Generated vector database
+image_similarity/chroma_backed/
+# Model weights
+*.pt

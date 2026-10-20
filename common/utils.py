@@ -3,6 +3,7 @@ import numpy as np  # 数值计算库
 import os  # 操作系统接口库
 import torch  # PyTorch深度学习框架
 import random  # 随机数生成库
+import re
 
 
 def seed_everything(seed):
@@ -19,3 +20,11 @@ def seed_everything(seed):
     torch.cuda.manual_seed(seed)  # 设置PyTorch GPU随机数种子
     torch.backends.cudnn.deterministic = True  # 确保CuDNN操作确定性
     torch.backends.cudnn.benchmark = False  # 禁用CuDNN性能优化
+
+
+
+
+def sorted_alphanum(img_names):
+    convert = lambda x: int(x) if x.isdigit() else x.lower()
+    alphanum_key = lambda name: [convert(x) for x in re.split('([0-9]+)', name)]
+    return sorted(img_names, key=alphanum_key)
